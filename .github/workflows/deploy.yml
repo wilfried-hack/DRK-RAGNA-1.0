@@ -31,12 +31,14 @@ jobs:
         run: npm install
 
       - name: Install FFmpeg
-        run: sudo apt-get install -y ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
 
       - name: Start application with timeout
         run: |
-          timeout 21590 npm start   # Limite l'execution a 5h 59m 50s
+          timeout 21590 npm start
 
-      - name: Save state (Optional)
-        run: |
-          ./save_state.sh
+      # Décommente ou adapte cette étape si tu disposes bien du script
+      # - name: Save state (Optional)
+      #   run: ./save_state.sh
